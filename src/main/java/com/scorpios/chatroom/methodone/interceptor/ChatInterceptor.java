@@ -1,4 +1,4 @@
-package com.scorpios.chatroom.interceptor;
+package com.scorpios.chatroom.methodone.interceptor;
 
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;

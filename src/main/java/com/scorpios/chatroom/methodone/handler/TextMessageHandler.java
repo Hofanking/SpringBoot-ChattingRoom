@@ -1,4 +1,4 @@
-package com.scorpios.chatroom.handler;
+package com.scorpios.chatroom.methodone.handler;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.socket.CloseStatus;

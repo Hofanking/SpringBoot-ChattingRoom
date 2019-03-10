@@ -1,4 +1,4 @@
-package com.scorpios.chatroom;
+package com.scorpios.chatroom.methodone;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

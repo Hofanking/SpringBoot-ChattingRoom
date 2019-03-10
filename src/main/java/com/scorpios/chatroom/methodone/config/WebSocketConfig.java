@@ -1,7 +1,7 @@
-package com.scorpios.chatroom.config;
+package com.scorpios.chatroom.methodone.config;
 
-import com.scorpios.chatroom.handler.TextMessageHandler;
-import com.scorpios.chatroom.interceptor.ChatInterceptor;
+import com.scorpios.chatroom.methodone.handler.TextMessageHandler;
+import com.scorpios.chatroom.methodone.interceptor.ChatInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
