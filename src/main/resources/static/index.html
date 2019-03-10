@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type="text/javascript">
+    var webSocket = null;
+
+    function connection(){
+
+        var username = document.getElementById("name").value;
+
+        if('WebSocket' in window){
+            console.log("您的浏览器支持WebSocket");
+            console.log(username);
+            webSocket = new WebSocket("ws://"+document.location.host+"/websocket/"+username);
+        }else {
+            console.log("您的浏览器不支持WebSocket");
+        }
+
+        //打开事件
+        webSocket.onopen = function() {
+            document.getElementById("message").innerHTML = "建立连接了";
+        };
+
+        //获得消息事件
+        webSocket.onmessage = function(msg) {
+            document.getElementById("message").innerHTML = msg.data;
+        };
+
+        //关闭事件
+        webSocket.onclose = function() {
+            document.getElementById("message").innerHTML = "连接关闭了"
+        };
+
+        //发生了错误事件
+        webSocket.onerror = function() {
+            document.getElementById("message").innerHTML = "出现异常了"
+        }
+
+        //当浏览器的页面窗口关闭的时候，此处要关闭连接
+        webSocket.beforeunload = function () {
+            if(webSocket != null){
+                webSocket.close()
+            }
+        }
+
+    }
+    
+    
+    function sendMessage() {
+
+        var toUser = document.getElementById("toUser").value;
+        var toMessage = document.getElementById("toMessage").value;
+        if(webSocket != null){
+            var message = '{"toUser":"'+toUser+'","toMessage":"'+toMessage+'"}';
+            webSocket.send(message);
+        }
+
+    }
+
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="name" name="name"><button onclick="connection()">连接</button><br>
+
+接收者名字：<input id="toUser" type="text" name="toUser"><br>
+内容：<input type="text" id="toMessage" name="toMessage">
+
+<button onclick="sendMessage()">发送</button><br><br>
+
+<span id="message"></span>
+
+
+</body>
+</html>
